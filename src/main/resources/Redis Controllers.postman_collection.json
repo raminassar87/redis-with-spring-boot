@@ -1,0 +1,1097 @@
+     {
+       "info": {
+         "_postman_id": "aaa3e559-18cf-4c50-8d76-33ba094d5697",
+         "name": "Redis Controllers",
+         "description": "Postman collection for TokenController and UserCacheController (Spring Boot + Redis)",
+         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+         "_exporter_id": "79659"
+       },
+       "item": [
+         {
+           "name": "Token Controller",
+           "item": [
+             {
+               "name": "Save Token",
+               "request": {
+                 "method": "POST",
+                 "header": [
+                   {
+                     "key": "Content-Type",
+                     "value": "application/json"
+                   }
+                 ],
+                 "body": {
+                   "mode": "raw",
+                   "raw": "{\n  \"token\": \"abc123xyz\"\n}",
+                   "options": {
+                     "raw": {
+                       "language": "json"
+                     }
+                   }
+                 },
+                 "url": {
+                   "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "tokens",
+                     "{{userId}}"
+                   ]
+                 },
+                 "description": "Save a token for a given userId with a 1-hour TTL"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "POST",
+                     "header": [
+                       {
+                         "key": "Content-Type",
+                         "value": "application/json"
+                       }
+                     ],
+                     "body": {
+                       "mode": "raw",
+                       "raw": "{\n  \"token\": \"abc123xyz\"\n}",
+                       "options": {
+                         "raw": {
+                           "language": "json"
+                         }
+                       }
+                     },
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}"
+                       ]
+                     },
+                     "description": "Save a token for a given userId with a 1-hour TTL"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "text/plain"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "Token saved for user: user1"
+                 }
+               ]
+             },
+             {
+               "name": "Get Token",
+               "request": {
+                 "method": "GET",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "tokens",
+                     "{{userId}}"
+                   ]
+                 },
+                 "description": "Retrieve token and remaining TTL in seconds for a given userId"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}"
+                       ]
+                     },
+                     "description": "Retrieve token and remaining TTL in seconds for a given userId"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"userId\": \"user1\",\n  \"token\": \"abc123xyz\",\n  \"ttlSeconds\": 3542\n}"
+                 },
+                 {
+                   "name": "Not Found",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}"
+                       ]
+                     },
+                     "description": "Retrieve token and remaining TTL in seconds for a given userId"
+                   },
+                   "status": "Not Found",
+                   "code": 404,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"error\": \"No token found for user: user1\"\n}"
+                 }
+               ]
+             },
+             {
+               "name": "Delete Token",
+               "request": {
+                 "method": "DELETE",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "tokens",
+                     "{{userId}}"
+                   ]
+                 },
+                 "description": "Delete the token for a given userId from Redis"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "DELETE",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}"
+                       ]
+                     },
+                     "description": "Delete the token for a given userId from Redis"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "text/plain"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "Token deleted for user: user1"
+                 }
+               ]
+             },
+             {
+               "name": "Check Token Exists",
+               "request": {
+                 "method": "GET",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/tokens/{{userId}}/exists",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "tokens",
+                     "{{userId}}",
+                     "exists"
+                   ]
+                 },
+                 "description": "Check whether a token key exists in Redis for the given userId"
+               },
+               "response": [
+                 {
+                   "name": "Exists",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}/exists",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}",
+                         "exists"
+                       ]
+                     },
+                     "description": "Check whether a token key exists in Redis for the given userId"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"userId\": \"user1\",\n  \"exists\": true\n}"
+                 },
+                 {
+                   "name": "Not Exists",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}/exists",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}",
+                         "exists"
+                       ]
+                     },
+                     "description": "Check whether a token key exists in Redis for the given userId"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"userId\": \"user1\",\n  \"exists\": false\n}"
+                 }
+               ]
+             },
+             {
+               "name": "Increment Login Attempts",
+               "request": {
+                 "method": "POST",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/tokens/{{userId}}/login-attempt",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "tokens",
+                     "{{userId}}",
+                     "login-attempt"
+                   ]
+                 },
+                 "description": "Atomically increment the login attempt counter for a given userId in Redis"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "POST",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/tokens/{{userId}}/login-attempt",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "tokens",
+                         "{{userId}}",
+                         "login-attempt"
+                       ]
+                     },
+                     "description": "Atomically increment the login attempt counter for a given userId in Redis"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"userId\": \"user1\",\n  \"loginAttempts\": 3\n}"
+                 }
+               ]
+             }
+           ],
+           "description": "Endpoints for managing tokens in Redis"
+         },
+         {
+           "name": "User Cache Controller",
+           "item": [
+             {
+               "name": "Cache User",
+               "request": {
+                 "method": "POST",
+                 "header": [
+                   {
+                     "key": "Content-Type",
+                     "value": "application/json"
+                   }
+                 ],
+                 "body": {
+                   "mode": "raw",
+                   "raw": "{\n  \"id\": \"1\",\n  \"name\": \"John Doe\",\n  \"email\": \"john@test.com\",\n  \"role\": \"ADMIN\"\n}",
+                   "options": {
+                     "raw": {
+                       "language": "json"
+                     }
+                   }
+                 },
+                 "url": {
+                   "raw": "{{baseUrl}}/api/users/cache",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "users",
+                     "cache"
+                   ]
+                 },
+                 "description": "Cache a full user object as a Redis Hash with a 30-minute TTL"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "POST",
+                     "header": [
+                       {
+                         "key": "Content-Type",
+                         "value": "application/json"
+                       }
+                     ],
+                     "body": {
+                       "mode": "raw",
+                       "raw": "{\n  \"id\": \"1\",\n  \"name\": \"John Doe\",\n  \"email\": \"john@test.com\",\n  \"role\": \"ADMIN\"\n}",
+                       "options": {
+                         "raw": {
+                           "language": "json"
+                         }
+                       }
+                     },
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache"
+                       ]
+                     },
+                     "description": "Cache a full user object as a Redis Hash with a 30-minute TTL"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "text/plain"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "User cached: 1"
+                 }
+               ]
+             },
+             {
+               "name": "Get User (All Fields)",
+               "request": {
+                 "method": "GET",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/users/cache/1",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "users",
+                     "cache",
+                     "1"
+                   ]
+                 },
+                 "description": "Retrieve all fields of a cached user from the Redis Hash"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1"
+                       ]
+                     },
+                     "description": "Retrieve all fields of a cached user from the Redis Hash"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@test.com\",\n  \"role\": \"ADMIN\"\n}"
+                 },
+                 {
+                   "name": "Not Found",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1"
+                       ]
+                     },
+                     "description": "Retrieve all fields of a cached user from the Redis Hash"
+                   },
+                   "status": "Not Found",
+                   "code": 404,
+                   "_postman_previewlanguage": "Text",
+                   "header": [],
+                   "cookie": [],
+                   "body": ""
+                 }
+               ]
+             },
+             {
+               "name": "Get User Email",
+               "request": {
+                 "method": "GET",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/users/cache/1/email",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "users",
+                     "cache",
+                     "1",
+                     "email"
+                   ]
+                 },
+                 "description": "Retrieve only the email field from the cached user Hash — no full object deserialization"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1/email",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1",
+                         "email"
+                       ]
+                     },
+                     "description": "Retrieve only the email field from the cached user Hash — no full object deserialization"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"userId\": \"1\",\n  \"email\": \"john@test.com\"\n}"
+                 },
+                 {
+                   "name": "Not Found",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1/email",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1",
+                         "email"
+                       ]
+                     },
+                     "description": "Retrieve only the email field from the cached user Hash — no full object deserialization"
+                   },
+                   "status": "Not Found",
+                   "code": 404,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"error\": \"User not found in cache\"\n}"
+                 }
+               ]
+             },
+             {
+               "name": "Update User Role",
+               "request": {
+                 "method": "PATCH",
+                 "header": [
+                   {
+                     "key": "Content-Type",
+                     "value": "application/json"
+                   }
+                 ],
+                 "body": {
+                   "mode": "raw",
+                   "raw": "{\n  \"role\": \"MANAGER\"\n}",
+                   "options": {
+                     "raw": {
+                       "language": "json"
+                     }
+                   }
+                 },
+                 "url": {
+                   "raw": "{{baseUrl}}/api/users/cache/1/role",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "users",
+                     "cache",
+                     "1",
+                     "role"
+                   ]
+                 },
+                 "description": "Update only the role field in the cached user Hash without touching other fields"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "PATCH",
+                     "header": [
+                       {
+                         "key": "Content-Type",
+                         "value": "application/json"
+                       }
+                     ],
+                     "body": {
+                       "mode": "raw",
+                       "raw": "{\n  \"role\": \"MANAGER\"\n}",
+                       "options": {
+                         "raw": {
+                           "language": "json"
+                         }
+                       }
+                     },
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1/role",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1",
+                         "role"
+                       ]
+                     },
+                     "description": "Update only the role field in the cached user Hash without touching other fields"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "text/plain"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "Role updated to: MANAGER"
+                 },
+                 {
+                   "name": "Bad Request",
+                   "originalRequest": {
+                     "method": "PATCH",
+                     "header": [
+                       {
+                         "key": "Content-Type",
+                         "value": "application/json"
+                       }
+                     ],
+                     "body": {
+                       "mode": "raw",
+                       "raw": "{\n  \"role\": \"MANAGER\"\n}",
+                       "options": {
+                         "raw": {
+                           "language": "json"
+                         }
+                       }
+                     },
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1/role",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1",
+                         "role"
+                       ]
+                     },
+                     "description": "Update only the role field in the cached user Hash without touching other fields"
+                   },
+                   "status": "Bad Request",
+                   "code": 400,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "text/plain"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "Role must not be empty"
+                 }
+               ]
+             },
+             {
+               "name": "Evict User from Cache",
+               "request": {
+                 "method": "DELETE",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/api/users/cache/1",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "api",
+                     "users",
+                     "cache",
+                     "1"
+                   ]
+                 },
+                 "description": "Remove the user's Redis Hash key entirely — forces a cache miss on next request"
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "DELETE",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/api/users/cache/1",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "api",
+                         "users",
+                         "cache",
+                         "1"
+                       ]
+                     },
+                     "description": "Remove the user's Redis Hash key entirely — forces a cache miss on next request"
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "Text",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "text/plain"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "User evicted from cache: 1"
+                 }
+               ]
+             }
+           ],
+           "description": "Endpoints for managing user objects cached in Redis as Hashes"
+         },
+         {
+           "name": "Event Controller (@Cacheable)",
+           "item": [
+             {
+               "name": "Get Event (@Cacheable)",
+               "request": {
+                 "method": "GET",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/events/1",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "events",
+                     "1"
+                   ]
+                 },
+                 "description": "First call hits the in-memory DB and caches the result in Redis under 'events::1'. Subsequent calls return from Redis — check the server console for the '>> DB hit' log which only appears on cache misses."
+               },
+               "response": [
+                 {
+                   "name": "Cache Miss (first call)",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/events/1",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "events",
+                         "1"
+                       ]
+                     }
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "json",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"id\": \"1\",\n  \"title\": \"Spring Boot Conf\",\n  \"location\": \"Berlin\",\n  \"date\": \"2026-05-10\"\n}"
+                 },
+                 {
+                   "name": "Cache Hit (subsequent calls)",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/events/1",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "events",
+                         "1"
+                       ]
+                     }
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "json",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"id\": \"1\",\n  \"title\": \"Spring Boot Conf\",\n  \"location\": \"Berlin\",\n  \"date\": \"2026-05-10\"\n}"
+                 },
+                 {
+                   "name": "Not Found",
+                   "originalRequest": {
+                     "method": "GET",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/events/99",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "events",
+                         "99"
+                       ]
+                     }
+                   },
+                   "status": "Not Found",
+                   "code": 404,
+                   "_postman_previewlanguage": "text",
+                   "header": [],
+                   "cookie": [],
+                   "body": ""
+                 }
+               ]
+             },
+             {
+               "name": "Save Event (@CachePut)",
+               "request": {
+                 "method": "POST",
+                 "header": [
+                   {
+                     "key": "Content-Type",
+                     "value": "application/json"
+                   }
+                 ],
+                 "body": {
+                   "mode": "raw",
+                   "raw": "{\n  \"id\": \"4\",\n  \"title\": \"KubeCon\",\n  \"location\": \"Paris\",\n  \"date\": \"2026-11-05\"\n}",
+                   "options": {
+                     "raw": {
+                       "language": "json"
+                     }
+                   }
+                 },
+                 "url": {
+                   "raw": "{{baseUrl}}/events",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "events"
+                   ]
+                 },
+                 "description": "Creates or updates an event. Uses @CachePut — always executes the method body AND writes the returned Event into the Redis cache under 'events::{id}'. A subsequent GET will be served from cache without hitting the DB."
+               },
+               "response": [
+                 {
+                   "name": "Created",
+                   "originalRequest": {
+                     "method": "POST",
+                     "header": [
+                       {
+                         "key": "Content-Type",
+                         "value": "application/json"
+                       }
+                     ],
+                     "body": {
+                       "mode": "raw",
+                       "raw": "{\n  \"id\": \"4\",\n  \"title\": \"KubeCon\",\n  \"location\": \"Paris\",\n  \"date\": \"2026-11-05\"\n}",
+                       "options": {
+                         "raw": {
+                           "language": "json"
+                         }
+                       }
+                     },
+                     "url": {
+                       "raw": "{{baseUrl}}/events",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "events"
+                       ]
+                     }
+                   },
+                   "status": "OK",
+                   "code": 200,
+                   "_postman_previewlanguage": "json",
+                   "header": [
+                     {
+                       "key": "Content-Type",
+                       "value": "application/json"
+                     }
+                   ],
+                   "cookie": [],
+                   "body": "{\n  \"id\": \"4\",\n  \"title\": \"KubeCon\",\n  \"location\": \"Paris\",\n  \"date\": \"2026-11-05\"\n}"
+                 }
+               ]
+             },
+             {
+               "name": "Delete Event (@CacheEvict)",
+               "request": {
+                 "method": "DELETE",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/events/1",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "events",
+                     "1"
+                   ]
+                 },
+                 "description": "Deletes the event from the in-memory DB and evicts its cache entry from Redis using @CacheEvict. A subsequent GET for this id will result in a cache miss."
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "DELETE",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/events/1",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "events",
+                         "1"
+                       ]
+                     }
+                   },
+                   "status": "No Content",
+                   "code": 204,
+                   "_postman_previewlanguage": "text",
+                   "header": [],
+                   "cookie": [],
+                   "body": ""
+                 }
+               ]
+             },
+             {
+               "name": "Clear All Events Cache (@CacheEvict allEntries)",
+               "request": {
+                 "method": "DELETE",
+                 "header": [],
+                 "url": {
+                   "raw": "{{baseUrl}}/events/cache",
+                   "host": [
+                     "{{baseUrl}}"
+                   ],
+                   "path": [
+                     "events",
+                     "cache"
+                   ]
+                 },
+                 "description": "Evicts every entry under the 'events' cache name using @CacheEvict(allEntries=true). All subsequent GETs will be cache misses until re-populated."
+               },
+               "response": [
+                 {
+                   "name": "Success",
+                   "originalRequest": {
+                     "method": "DELETE",
+                     "header": [],
+                     "url": {
+                       "raw": "{{baseUrl}}/events/cache",
+                       "host": [
+                         "{{baseUrl}}"
+                       ],
+                       "path": [
+                         "events",
+                         "cache"
+                       ]
+                     }
+                   },
+                   "status": "No Content",
+                   "code": 204,
+                   "_postman_previewlanguage": "text",
+                   "header": [],
+                   "cookie": [],
+                   "body": ""
+                 }
+               ]
+             }
+           ],
+           "description": "Endpoints for EventController — demonstrates @Cacheable (read), @CachePut (write/update), and @CacheEvict (delete / clear all). Pre-seeded event IDs: 1, 2, 3."
+         }
+       ],
+       "event": [
+         {
+           "listen": "prerequest",
+           "script": {
+             "type": "text/javascript",
+             "packages": {},
+             "requests": {},
+             "exec": [
+               ""
+             ]
+           }
+         },
+         {
+           "listen": "test",
+           "script": {
+             "type": "text/javascript",
+             "packages": {},
+             "requests": {},
+             "exec": [
+               ""
+             ]
+           }
+         }
+       ],
+       "variable": [
+         {
+           "key": "baseUrl",
+           "value": "http://localhost:8080"
+         },
+         {
+           "key": "userId",
+           "value": "user1"
+         }
+       ]
+     }
