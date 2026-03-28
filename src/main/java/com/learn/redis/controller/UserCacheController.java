@@ -1,7 +1,7 @@
-package com.learnredis.learnredis.controller;
+package com.learn.redis.controller;
 
-import com.learnredis.learnredis.bean.User;
-import com.learnredis.learnredis.service.UserCacheService;
+import com.learn.redis.bean.User;
+import com.learn.redis.service.UserCacheService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

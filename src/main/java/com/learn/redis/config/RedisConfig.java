@@ -1,4 +1,4 @@
-package com.learnredis.learnredis.config;
+package com.learn.redis.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;

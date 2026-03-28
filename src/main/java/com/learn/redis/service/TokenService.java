@@ -1,4 +1,4 @@
-package com.learnredis.learnredis.service;
+package com.learn.redis.service;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

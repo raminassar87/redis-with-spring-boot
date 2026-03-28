@@ -1,6 +1,6 @@
-package com.learnredis.learnredis.service;
+package com.learn.redis.service;
 
-import com.learnredis.learnredis.bean.User;
+import com.learn.redis.bean.User;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 

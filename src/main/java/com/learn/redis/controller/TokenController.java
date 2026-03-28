@@ -1,6 +1,6 @@
-package com.learnredis.learnredis.controller;
+package com.learn.redis.controller;
 
-import com.learnredis.learnredis.service.TokenService;
+import com.learn.redis.service.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

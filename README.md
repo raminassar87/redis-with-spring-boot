@@ -1,4 +1,4 @@
-# learn-redis
+# redis-with-spring-boot
 
 A Spring Boot application demonstrating different Redis usage patterns through three independent, self-contained examples.
 
@@ -82,7 +82,7 @@ spring.data.redis.lettuce.pool.max-idle=5
 ## Project Structure
 
 ```
-src/main/java/com/learnredis/learnredis/
+src/main/java/com/learn.redis/
 ├── bean/
 │   ├── Event.java               # Event POJO (Serializable)
 │   └── User.java                # User POJO

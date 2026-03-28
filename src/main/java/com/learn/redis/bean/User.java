@@ -1,4 +1,4 @@
-package com.learnredis.learnredis.bean;
+package com.learn.redis.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

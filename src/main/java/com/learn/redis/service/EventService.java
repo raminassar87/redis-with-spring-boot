@@ -1,6 +1,6 @@
-package com.learnredis.learnredis.service;
+package com.learn.redis.service;
 
-import com.learnredis.learnredis.bean.Event;
+import com.learn.redis.bean.Event;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;

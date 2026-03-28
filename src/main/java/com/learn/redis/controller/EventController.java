@@ -1,7 +1,7 @@
-package com.learnredis.learnredis.controller;
+package com.learn.redis.controller;
 
-import com.learnredis.learnredis.bean.Event;
-import com.learnredis.learnredis.service.EventService;
+import com.learn.redis.bean.Event;
+import com.learn.redis.service.EventService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
